@@ -1,0 +1,47 @@
+name: CI - Build Check
+
+on:
+  pull_request:
+    branches: ["master"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Install bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Install dependencies (root)
+        run: bun i
+
+      - name: Build library
+        run: bun run generate && bun run build
+
+      - name: Install dependencies (gallery)
+        run: cd gallery && bun i
+
+      - name: Build gallery
+        run: cd gallery && bun run build
+
+      - name: Build Summary
+        if: success()
+        run: |
+          echo "## ✅ Build Status: Success" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "All builds completed successfully!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Build Details" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Library build: **Success**" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Gallery build: **Success**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "No errors detected. Ready to merge! 🚀" >> $GITHUB_STEP_SUMMARY
+
+      - name: Build Failed Summary
+        if: failure()
+        run: |
+          echo "## ❌ Build Status: Failed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "One or more builds failed. Please check the logs above for details." >> $GITHUB_STEP_SUMMARY
