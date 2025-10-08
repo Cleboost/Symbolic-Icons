@@ -1,0 +1,5 @@
+node_modules
+.vscode
+.ide
+dist
+src/icons

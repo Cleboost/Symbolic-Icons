@@ -1,0 +1,75 @@
+{
+  "name": "symbolic-icons",
+  "version": "3.3.91-rc.1",
+  "description": "Jeu d'icônes Symbolic pour Vue",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "typecheck": "tsc",
+    "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "clean": "rm -rf dist src/icons",
+    "download": "bun scripts/downloadIcons.ts",
+    "generate": "bun scripts/generateVueIcons.ts",
+    "build": "bun scripts/build.ts"
+  },
+  "keywords": [
+    "vue",
+    "icons",
+    "svg",
+    "symbolic",
+    "gnome"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cleboost/symbolic-icons.git"
+  },
+  "author": "Cleboost <clement.balarot@gmail.com> (https://github.com/Cleboost)",
+  "bugs": {
+    "url": "https://github.com/Cleboost/symbolic-icons/issues"
+  },
+  "homepage": "https://github.com/Cleboost/symbolic-icons#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.22.0",
+    "@types/bun": "^1.2.23",
+    "@types/tar": "^6.1.13",
+    "eslint": "^9.22.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "prettier": "^3.6.2",
+    "svgo": "^3.3.2",
+    "tar": "^7.5.1",
+    "typescript": "^5.8.3",
+    "vue": "^3.5.13",
+    "vue-tsc": "^2.1.6"
+  },
+  "peerDependencies": {
+    "vue": ">=3.3.0"
+  },
+  "workspaces": [
+    "gallery"
+  ],
+  "prettier": {
+    "quoteProps": "consistent",
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "useTabs": false
+  },
+  "private": false
+}
