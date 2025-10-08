@@ -1,6 +1,6 @@
 {
   "name": "symbolic-icons",
-  "version": "3.3.91-rc.1",
+  "version": "3.3.91-rc.2",
   "description": "Jeu d'icônes Symbolic pour Vue",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
