@@ -1,57 +1,188 @@
-<p align="center">
-  <img src=".github/assets/logotype.svg" alt="Papicons" width="400">
-</p>
-<p align="center">
-Papicons-Vue is a fork of <a href=https://github.com/PapillonApp/Papicons>Papicons</a>, a collection of icons designed by Tom Things for Papillon.
-</p>
-<br/>
+<div align="center">
+  <p align="center">
+    <a href="#">
+      <img src="./.github/assets/banner.png"/>
+    </a>
+  </p>
+</div>
 
-## Installation
+<p align="center">
+  <strong>GNOME Symbolic Icons for Vue 3</strong>
+</p>
 
-You can use Papicons-Vue in your Vue 3 project by installing the package via npm or yarn:
+<p align="center">
+  A complete collection of GNOME symbolic icons packaged as Vue 3 components with TypeScript support.
+</p>
+
+<p align="center">
+  <a href="#installation">Installation</a> •
+  <a href="#usage">Usage</a> •
+  <a href="#features">Features</a> •
+  <a href="#icon-gallery">Gallery</a> •
+  <a href="#contributing">Contributing</a>
+</p>
+
+---
+
+## 📦 Installation
+
+Install the package using your preferred package manager:
 
 ```bash
-npm install papicons-vue
+npm install symbolic-icons
 ```
-
-or
 
 ```bash
-yarn add papicons-vue
+yarn add symbolic-icons
 ```
 
-## Usage
+```bash
+pnpm add symbolic-icons
+```
 
-To use Papicons in your Vue project, you can import the icons directly from the package. Here's an example of how to use an icon:
+```bash
+bun add symbolic-icons
+```
+
+## 🚀 Usage
+
+### Basic Usage
+
+Import and use icons directly in your Vue 3 components:
 
 ```vue
 <script setup lang="ts">
-  import { Butterfly } from 'papicons-vue';
+import { AlarmSymbolic, FolderSymbolic, StarredSymbolic } from 'symbolic-icons'
 </script>
 
 <template>
   <div>
-    <Butterfly :size="50" color="#0042DC" />
+    <AlarmSymbolic :size="32" />
+    <FolderSymbolic :size="48" color="#1a73e8" />
+    <StarredSymbolic :size="24" :opacity="0.8" />
   </div>
-  
 </template>
 ```
 
-## Contributing
+### Props
 
-You can add you own icons to the Papicons collection by following these steps:
+All icon components accept the following props:
 
-1. **Create a new SVG icon :** You can join the [Figma community](https://www.figma.com/community/file/1543947677978703963) to create your own icons with the grids and rules provided.
-2. **Export the SVG icon :** Once you have created your icon, export it as an SVG file.
-3. **Clean the SVG file :** Remove fill on paths and groups, remove unnecessary attributes, and ensure the SVG is optimized for Vue usage.
-4. **Add the icon to the package :** Place the cleaned SVG file in the `icons` directory.
-5. **Run the build script :** Run the build script to generate the Vue components from the SVG files. You can do this by running:
-```bash
-npm run icons:build
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `number` | `16` | Icon size in pixels |
+| `color` | `string` | `currentColor` | Icon color (any valid CSS color) |
+| `opacity` | `number` | `1` | Icon opacity (0 to 1) |
+
+### TypeScript Support
+
+Full TypeScript support with type definitions included:
+
+```typescript
+import type { SymbolicIconsProps } from 'symbolic-icons'
+import { AlarmSymbolic } from 'symbolic-icons'
+
+const iconProps: SymbolicIconsProps = {
+  size: 32,
+  color: '#000000',
+  opacity: 1
+}
 ```
-6. **Your icons will be automatically added to the package !**
 
-## License
+## ✨ Features
 
-This repository, including the icons, is licensed under the [MIT License](./LICENSE).
+- 🎨 **386+ icons** - Complete GNOME symbolic icon set
+- 🔧 **Vue 3 native** - Built specifically for Vue 3 with Composition API
+- 📘 **TypeScript** - Full type definitions included
+- 🎯 **Tree-shakeable** - Only import what you need
+- 🎨 **Customizable** - Size, color, and opacity props
+- ⚡ **Lightweight** - Optimized SVG output
+- 🔍 **Searchable** - Interactive gallery to find icons
+
+## 🎨 Icon Gallery
+
+Browse all available icons in the interactive gallery:
+
+🔗 **[View Icon Gallery](https://your-gallery-url.com)**
+
+Or run the gallery locally:
+
+```bash
+git clone https://github.com/Cleboost/symbolic-icons.git
+cd symbolic-icons
+bun install
+bun run build
+cd gallery
+bun install
+bun run dev
+```
+
+## 📚 Icon Categories
+
+Icons are organized into categories:
+
+- **Actions** - Common UI actions (copy, paste, delete, etc.)
+- **Apps** - Application icons
+- **Devices** - Hardware and device icons
+- **Emblems** - Status and badge icons
+- **Faces** - Emoji-style face icons
+- **Folders** - File system icons
+- **Network** - Connectivity and network icons
+- **Status** - System status indicators
+- **Weather** - Weather condition icons
+
+## 🛠️ Development
+
+### Prerequisites
+
+- [Bun](https://bun.sh/) (recommended) or Node.js 18+
+- Vue 3.3+
+
+### Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/Cleboost/symbolic-icons.git
+cd symbolic-icons
+
+# Install dependencies
+bun install
+
+# Download latest GNOME icons
+bun run download
+
+# Generate Vue components
+bun run generate
+
+# Build the package
+bun run build
+```
+
+### Scripts
+
+| Command | Description |
+|---------|-------------|
+| `bun run download` | Download latest GNOME symbolic icons |
+| `bun run generate` | Generate Vue components from SVG files |
+| `bun run build` | Build the package for distribution |
+| `bun run clean` | Clean generated files |
+| `bun run typecheck` | Run TypeScript type checking |
+| `bun run lint` | Lint the codebase |
+
+## 📄 License
+
+This project is licensed under the [MIT License](./LICENSE).
+
+The GNOME icons are licensed under the [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) license.
+
+## 🙏 Credits
+
+- Icons by [GNOME Project](https://gitlab.gnome.org/GNOME/adwaita-icon-theme)
+- Vue 3 wrapper by [Cleboost](https://github.com/Cleboost)
+
+---
+
+<p align="center">
+  Made with ❤️ for the Vue community
+</p>
 
