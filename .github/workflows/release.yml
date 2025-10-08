@@ -1,0 +1,51 @@
+name: Release - NPM
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: "npm"
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Install bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Setup Node.js (for NPM)
+        uses: actions/setup-node@v3
+
+      - name: Install dependencies
+        run: bun i 
+    
+      - name: Build library
+        run: |  
+          bun run generate
+          bun run build
+
+      - name: Publish to NPM
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Release Failed Summary
+        if: failure()
+        run: |
+          echo "## ❌ Release Status: Failed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "One or more builds failed. Please check the logs above for details." >> $GITHUB_STEP_SUMMARY
+
+      - name: Release Success Summary
+        if: success()
+        run: |
+          echo "## ✅ Release Status: Success" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Release completed successfully!" >> $GITHUB_STEP_SUMMARY
