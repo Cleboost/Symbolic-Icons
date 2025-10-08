@@ -5,6 +5,7 @@ on:
 
 permissions:
   contents: read
+  id-token: write
 
 concurrency:
   group: "npm"
@@ -22,6 +23,8 @@ jobs:
 
       - name: Setup Node.js (for NPM)
         uses: actions/setup-node@v3
+        with:
+          registry-url: "https://registry.npmjs.org/"
 
       - name: Install dependencies
         run: bun i 
