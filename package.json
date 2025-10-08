@@ -39,7 +39,7 @@
   "bugs": {
     "url": "https://github.com/Cleboost/symbolic-icons/issues"
   },
-  "homepage": "https://github.com/Cleboost/symbolic-icons#readme",
+  "homepage": "https://symbolic-icons.cleboost.com",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public"
